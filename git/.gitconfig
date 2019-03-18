@@ -1,0 +1,12 @@
+[user]
+	email = noah@santschi-cooney.ch
+	name = Noah Santschi-Cooney
+	signingkey = 3B22282472C8AE48
+[commit]
+	gpgsign = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
