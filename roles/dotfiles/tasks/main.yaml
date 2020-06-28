@@ -5,9 +5,15 @@
     name: stow
     state: present
 
+- name: Build directories list
+  find:
+    paths: [dotfiles/]
+    recurse: no
+    file_type: directory
+  register: files
+
 - name: Deploy dotfiles!
-  with_fileglob:
-    - "dotfiles"
-  command: "stow -t ../.. {{ item }}"
+  with_items: '{{ files.files }}'
+  command: 'stow -t ../.. {{ item.path | replace("dotfiles/", "") }}'
   args:
     chdir: ./dotfiles
