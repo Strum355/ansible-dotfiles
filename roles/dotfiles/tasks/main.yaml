@@ -1,0 +1,13 @@
+---
+- name: Ensure Stow installed
+  become: yes
+  pacman:
+    name: stow
+    state: present
+
+- name: Deploy dotfiles!
+  with_fileglob:
+    - "dotfiles"
+  command: "stow -t ../.. {{ item }}"
+  args:
+    chdir: ./dotfiles

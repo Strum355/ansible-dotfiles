@@ -1,0 +1,5 @@
+---
+- name: Use Stow to deploy dotfiles
+  hosts: local
+  roles:
+    - dotfiles
