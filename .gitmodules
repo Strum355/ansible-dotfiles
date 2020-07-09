@@ -1,0 +1,4 @@
+[submodule "dotfiles/pass/.password-store"]
+	path = dotfiles/pass/.password-store
+	url = git@github.com:Strum355/pass.git
+	branch = master
