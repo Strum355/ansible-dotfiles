@@ -1,14 +1,23 @@
 set fish_greeting ""
 set -x GOPATH $HOME/Go
-set -x PATH /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $PATH 
+set -x PATH /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin $PATH 
 set -x M2_HOME /opt/maven
 set -x M2 $M2_HOME/bin
 set -x PATH $M2 $PATH
 set -x RUST_BACKTRACE 1
-set -x GO111MODULE auto
+set -x GO111MODULE on
 set -x VAULT_ADDR http://127.0.0.1:10001
 set -x KUBECONFIG ~/kubeconfig 
-set -g EDITOR nano
+set -x EDITOR nano
+
+set -x REDIS_DATA_DIR /home/noah/Sourcegraph/redis_data
+set -x PGDATA_DIR /home/noah/Sourcegraph/postgres_data 
+set -x PGPORT 5432
+set -x PGHOST localhost
+set -x PGUSER sourcegraph
+set -x PGPASSWORD sourcegraph
+set -x PGDATABASE sourcegraph
+set -x PGSSLMODE disable
 
 set -g theme_title_display_process yes
 set -g theme_title_use_abbreviated_path no
