@@ -1,0 +1,150 @@
+[bar/default]
+bottom = false
+font-0 = monospace:size=10
+#font-1 = Blobmoji:scale=11
+font-1 = Font Awesome 5 Brands:size=10
+font-2 = Font Awesome 5 Free:size=10
+font-3 = Noto Emoji:scale=14
+font-4 = Fira Code:size=10
+
+modules-left = window
+modules-right = fs_docker fs_root fs_lxd cpu memory volume wired-network date powermenu
+
+spacing = 1
+padding-right = 5
+module-margin = 1
+height = 16
+offset-y = 0
+
+background = #000000ff
+foreground = #ccffffff
+
+line-color = ${bar/default.background}
+line-size = 13
+
+separator = |
+
+[module/window]
+type = internal/xwindow
+label = %title%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label> <ramp-coreload>
+label = CPU
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+[module/date]
+type = internal/date
+date = "%%{F#bb}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}"
+date-alt = "%%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fff}%Ss%%{F-}"
+
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+label = RAM %gb_used%/%gb_total%
+
+[module/fs_docker]
+type = internal/fs
+mount-0 = /docker
+interval = 30
+fixed-values = true
+label-mounted = %mountpoint% %percentage_used%%
+
+[module/fs_root]
+type = internal/fs
+mount-0 = /
+interval = 30
+fixed-values = true
+label-mounted = %mountpoint% %percentage_used%%
+
+[module/fs_lxd]
+type = internal/fs
+mount-0 = /lxd
+interval = 30
+fixed-values = true
+label-mounted = %mountpoint% %percentage_used%%
+
+[module/wired-network]
+type = internal/network
+interface = enp4s0
+interval = 10
+
+label-connected = 🖥️ %local_ip%
+label-disconnected-foreground = #66
+
+[module/volume]
+type = internal/alsa
+master-mixer = Master
+#headphone-mixer = Headphone
+#headphone-id = 9
+
+format-volume = <ramp-volume><label-volume>
+label-muted = 🔇 00%
+label-muted-foreground = #aa
+
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+#ramp-volume-3 = 
+
+[module/powermenu]
+type = custom/menu
+
+label-open = Menu |
+label-close = Close ->
+
+menu-0-0 = "Terminate WM "
+menu-0-0-foreground = #fba922
+menu-0-0-exec = bspc quit -1
+menu-0-1 = "Reboot "
+menu-0-1-foreground = #fba922
+menu-0-1-exec = menu_open-1
+menu-0-2 = "Power off "
+menu-0-2-foreground = #fba922
+menu-0-2-exec = menu_open-2
+
+menu-1-0 = "Cancel "
+menu-1-0-foreground = #fba922
+menu-1-0-exec = menu_open-0
+menu-1-1 = "Reboot "
+menu-1-1-foreground = #fba922
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = "Power off "
+menu-2-0-foreground = #fba922
+menu-2-0-exec = sudo poweroff
+menu-2-1 = "Cancel "
+menu-2-1-foreground = #fba922
+menu-2-1-exec = menu_open-0
+
+[module/clock]
+type = internal/date
+interval = 2
+date = "%%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}"
