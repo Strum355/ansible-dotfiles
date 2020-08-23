@@ -24,6 +24,7 @@ set -g theme_title_use_abbreviated_path no
 set -g theme_show_exit_status yes
 set -g theme_color_scheme terminal
 set -g theme_display_k8s_context yes
+set -g theme_display_date no
 
 alias k "kubectl"
 alias mk "minikube"
