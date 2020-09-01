@@ -1,4 +1,6 @@
 [bar/default]
+monitor = DP-4.8
+monitor-fallback = 
 bottom = false
 font-0 = monospace:size=10
 #font-1 = Blobmoji:scale=11
