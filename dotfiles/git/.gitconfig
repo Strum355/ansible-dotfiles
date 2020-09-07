@@ -11,3 +11,6 @@
 	editor = nano
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    pushf = push --force-with-lease
+    addall = add --all
+    commitm = commit -m
