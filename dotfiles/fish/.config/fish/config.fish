@@ -9,8 +9,8 @@ set -x GO111MODULE on
 set -x VAULT_ADDR http://127.0.0.1:10001
 set -x KUBECONFIG ~/kubeconfig 
 set -x EDITOR nano
-set -x JAVA_OPTS -XX:+ShowCodeDetailsInExceptionMessages
-
+set -x JAVA_OPTS -XX:+IgnoreUnrecognizedVMOptions -XX:+ShowCodeDetailsInExceptionMessages
+set -x JAVA_HOME /usr/lib/jvm/java-15-jdk
 set -x REDIS_DATA_DIR /home/noah/Sourcegraph/redis_data
 set -x PGDATA_DIR /home/noah/Sourcegraph/postgres_data 
 set -x PGPORT 5432
@@ -19,6 +19,7 @@ set -x PGUSER sourcegraph
 set -x PGPASSWORD sourcegraph
 set -x PGDATABASE sourcegraph
 set -x PGSSLMODE disable
+set -x SG_LSIFCLANG /home/noah/Sourcegraph/lsif-clang
 
 set -g theme_title_display_process yes
 set -g theme_title_use_abbreviated_path no
@@ -40,4 +41,8 @@ end
 
 if test -n "$DESKTOP_SESSION"
     set -x (gnome-keyring-daemon --start | string split "=")
+end
+
+function __direnv_export_eval --on-event fish_postexec;
+        "/usr/bin/direnv" export fish | source;
 end
