@@ -20,11 +20,13 @@ hide_edge_borders both
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+mouse_warping none
 
 focus_follows_mouse no
 
 #smart_gaps on
 gaps inner 15
+gaps top -5
 
 bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui -r | xclip -selection clipboard -t image/png
@@ -180,6 +182,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Kalu"] floating enable
 for_window [class="Pritunl"] floating enable
 for_window [class="Calendar"] floating enable
+for_window [class="zoom"] floating enable
 for_window [class=".*"] border pixel 0
 
 ## Multimedia Keys
@@ -218,6 +221,7 @@ bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
 
 # Autostart apps
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id nm-applet
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "sleep 2s && kalu"
