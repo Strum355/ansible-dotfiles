@@ -10,7 +10,7 @@ font-3 = Noto Emoji:scale=14
 font-4 = Fira Code:size=10
 
 modules-left = window
-modules-right = fs_docker fs_root fs_home fs_lxd cpu memory volume wired-network date powermenu
+modules-right = fs_docker fs_root fs_home fs_lxd fs_sg cpu memory volume wired-network date powermenu
 
 spacing = 1
 padding-right = 5
@@ -82,6 +82,13 @@ label-mounted = %mountpoint% %percentage_used%%
 [module/fs_root]
 type = internal/fs
 mount-0 = /
+interval = 30
+fixed-values = true
+label-mounted = %mountpoint% %percentage_used%%
+
+[module/fs_sg]
+type = internal/fs
+mount-0 = /home/noah/.sourcegraph
 interval = 30
 fixed-values = true
 label-mounted = %mountpoint% %percentage_used%%
