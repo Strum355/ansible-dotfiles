@@ -163,18 +163,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676e7d
-set $urgent-bg-color     #e53935
-set $indicator-color     #a0a0a0
+bindsym Control+Mod1+a exec $HOME/.bin/mute_zoom.sh
+
+set $bg-color              #2f343f
+set $inactive-bg-color     #2f343f
+set $inactive-border-color #585c65
+set $text-color            #f3f4f5
+set $inactive-text-color   #676e7d
+set $urgent-bg-color       #e53935
+set $indicator-color       #a0a0a0
 
 # set window colors
 #                       border             background         text                 indicator
 client.focused          $bg-color          $bg-color          $text-color          $indicator-color
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.unfocused        $inactive-border-color $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-border-color $inactive-bg-color $inactive-text-color $indicator-color
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
 
 # floating windows
@@ -183,6 +186,7 @@ for_window [class="Kalu"] floating enable
 for_window [class="Pritunl"] floating enable
 for_window [class="Calendar"] floating enable
 for_window [class="zoom"] floating enable
+for_window [title="Zoom Meeting"] floating disable
 for_window [class=".*"] border pixel 0
 
 ## Multimedia Keys
