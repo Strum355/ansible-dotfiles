@@ -1,5 +1,5 @@
 package cd
-package https://github.com/fabioantunes/fish-nvm
+package https://github.com/strum355/fzf
 package sudope
 theme bobthefish
 theme default
