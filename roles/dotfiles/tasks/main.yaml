@@ -17,8 +17,9 @@
   with_items: '{{ files.files }}'
   shell: |
     STOW_PATH={{ item.path | replace("dotfiles/", "") }}
-    OVERRIDE=$(cat ${STOW_PATH}/.override 2>/dev/null) 
-    stow -v --ignore="\.override" -t ${OVERRIDE:-../..} ${STOW_PATH}
+    OVERRIDE=$(cat ${STOW_PATH}/.override 2>/dev/null)
+    NOAH_HOME=$(getent passwd noah | cut -d: -f6)
+    stow -v --ignore="\.override" -t ${OVERRIDE:-$NOAH_HOME} ${STOW_PATH}
   args:
     chdir: ./dotfiles
     executable: /bin/bash
