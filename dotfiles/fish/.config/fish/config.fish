@@ -20,6 +20,7 @@ set -x PGPASSWORD sourcegraph
 set -x PGDATABASE sourcegraph
 set -x PGSSLMODE disable
 set -x SG_LSIFCLANG /home/noah/Sourcegraph/lsif-clang
+set -x MCSHADER_DEBUG true
 
 set -g theme_title_display_process yes
 set -g theme_title_use_abbreviated_path no

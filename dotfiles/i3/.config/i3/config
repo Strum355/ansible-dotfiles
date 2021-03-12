@@ -212,6 +212,7 @@ bindsym $mod+Ctrl+space exec playerctl play-pause
 
 # App shortcuts
 bindsym $mod+w exec "/usr/bin/chromium"
+bindsym $mod+slash exec "splatmoji copy"
 
 # Autostart apps
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
