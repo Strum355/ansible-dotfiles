@@ -1,6 +1,6 @@
 set fish_greeting ""
 set -x GOPATH $HOME/Go
-set -x PATH /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin /opt/visualvm/bin /opt/asdf-vm/bin $PATH 
+set -x PATH /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin /opt/visualvm/bin /opt/asdf-vm/bin /home/noah/.local/share/coursier/bin $PATH
 set -x M2_HOME /opt/maven
 set -x M2 $M2_HOME/bin
 set -x PATH $M2 $PATH
@@ -10,7 +10,7 @@ set -x VAULT_ADDR http://127.0.0.1:10001
 set -x KUBECONFIG ~/kubeconfig 
 set -x EDITOR nano
 set -x JAVA_OPTS -XX:+IgnoreUnrecognizedVMOptions -XX:+ShowCodeDetailsInExceptionMessages
-set -x JAVA_HOME /usr/lib/jvm/java-15-jdk
+#set -x JAVA_HOME /usr/lib/jvm/java-16-jdk
 set -x REDIS_DATA_DIR /home/noah/Sourcegraph/redis_data
 set -x PGDATA_DIR /home/noah/Sourcegraph/postgres_data 
 set -x PGPORT 5432
