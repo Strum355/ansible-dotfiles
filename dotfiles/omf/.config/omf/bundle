@@ -1,5 +1,7 @@
 package cd
+package foreign-env
 package https://github.com/strum355/fzf
+package sdk
 package sudope
 theme bobthefish
 theme default

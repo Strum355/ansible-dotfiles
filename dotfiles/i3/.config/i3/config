@@ -19,7 +19,7 @@ hide_edge_borders both
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier Control
 mouse_warping none
 
 focus_follows_mouse no
@@ -220,10 +220,9 @@ exec_always --no-startup-id "compton --config ~/.config/compton/compton.conf -b"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "sleep 2s && kalu"
-exec --no-startup-id "xrandr --output DP-4.8 --auto --primary --right-of HDMI-0"
-exec --no-startup-id "xrandr --output DP-2.8 --auto --primary --right-of HDMI-0"
+exec_always --no-startup-id "xrandr --output DP-4.8 --auto --primary --left-of HDMI-0"
 exec --no-startup-id "eval (ssh-agent -c)"
-#exec --no-startup-id "picom --config ~/.config/compton/compton.conf"
+#exec_always --no-startup-id "picom --config ~/.config/compton/compton.conf"
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 exec --no-startup-id "xset s off && xset -dpms"
 exec --no-startup-id "watchman watch ~/Sourcegraph/sourcegraph/"

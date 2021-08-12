@@ -42,6 +42,7 @@ end
 
 if test -n "$DESKTOP_SESSION"
     set -x (gnome-keyring-daemon --start | string split "=")
+    #fenv "eval `gnome-keyring-daemon --start`"
 end
 
 function __direnv_export_eval --on-event fish_postexec;
@@ -51,3 +52,5 @@ end
 set -U FZF_DEFAULT_OPTS "--height 40% --layout reverse-list --inline-info"
 set -U FZF_DEFAULT_COMMAND "fd --no-ignore-vcs --follow --hidden . --base-directory \$dir"
 set -U FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
+
+fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
