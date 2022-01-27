@@ -1,6 +1,6 @@
 set fish_greeting ""
 set -x GOPATH $HOME/Go
-set -x PATH /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin /opt/visualvm/bin /opt/asdf-vm/bin /home/noah/.local/share/coursier/bin $PATH
+set -x PATH /opt/vmware/ws1-hub /opt/vmware/ws1-hub/bin /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin /opt/visualvm/bin /opt/asdf-vm/bin /home/noah/.local/share/coursier/bin $PATH
 set -x M2_HOME /opt/maven
 set -x M2 $M2_HOME/bin
 set -x PATH $M2 $PATH
@@ -46,11 +46,12 @@ if test -n "$DESKTOP_SESSION"
 end
 
 function __direnv_export_eval --on-event fish_postexec;
-        "/usr/bin/direnv" export fish | source;
+        "direnv" export fish | source;
 end
 
 set -U FZF_DEFAULT_OPTS "--height 40% --layout reverse-list --inline-info"
 set -U FZF_DEFAULT_COMMAND "fd --no-ignore-vcs --follow --hidden . --base-directory \$dir"
 set -U FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
 
-fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
+#fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
+# fenv "source ~/.nix-profile/etc/profile.d/hm-session-vars.sh"
