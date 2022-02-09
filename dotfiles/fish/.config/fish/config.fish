@@ -1,6 +1,6 @@
 set fish_greeting ""
 set -x GOPATH $HOME/Go
-set -x PATH /opt/vmware/ws1-hub /opt/vmware/ws1-hub/bin /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin /opt/visualvm/bin /opt/asdf-vm/bin /home/noah/.local/share/coursier/bin $PATH
+set -x PATH $HOME/.nix-profile/bin /opt/vmware/ws1-hub /opt/vmware/ws1-hub/bin /usr/local/go/bin $HOME/.bin $HOME/.local/bin $GOPATH/bin /home/noah/.gem/ruby/2.7.0/bin /opt/protoc/bin $HOME/.cargo/bin /opt/visualvm/bin /opt/asdf-vm/bin $HOME/.local/share/coursier/bin $PATH
 set -x M2_HOME /opt/maven
 set -x M2 $M2_HOME/bin
 set -x PATH $M2 $PATH
@@ -9,18 +9,34 @@ set -x GO111MODULE on
 set -x VAULT_ADDR http://127.0.0.1:10001
 set -x KUBECONFIG ~/kubeconfig 
 set -x EDITOR nano
+
 set -x JAVA_OPTS -XX:+IgnoreUnrecognizedVMOptions -XX:+ShowCodeDetailsInExceptionMessages
 #set -x JAVA_HOME /usr/lib/jvm/java-16-jdk
+
 set -x REDIS_DATA_DIR /home/noah/Sourcegraph/redis_data
-set -x PGDATA_DIR /home/noah/Sourcegraph/postgres_data 
-set -x PGPORT 5432
-set -x PGHOST localhost
-set -x PGUSER sourcegraph
-set -x PGPASSWORD sourcegraph
-set -x PGDATABASE sourcegraph
-set -x PGSSLMODE disable
-set -x SG_LSIFCLANG /home/noah/Sourcegraph/lsif-clang
+#set -x PGDATA_DIR /home/noah/Sourcegraph/postgres_data 
+#set -x PGPORT 5432
+#set -x PGHOST localhost
+set -x PGUSER noah
+#set -x PGPASSWORD sourcegraph
+#set -x PGDATABASE sourcegraph
+#set -x PGSSLMODE disable
+
+set -x BROWSER firefox
+
 set -x MCSHADER_DEBUG true
+
+set -x NIX_PATH $HOME/.nix-defexpr/channels:$NIX_PATH
+
+if [ $XDG_SESSION_TYPE = "wayland" ]
+    set -x SDL_VIDEODRIVER wayland
+    set -x _JAVA_AWT_WM_NONREPARENTING 1
+    set -x QT_QPA_PLATFORM wayland
+    set -x MOZ_ENABLE_XINPUT2 1
+    set -x MOZ_ENABLE_WAYLAND 1
+    set -x GDK_BACKEND wayland
+    set -x NIXOS_OZONE_WL 0
+end
 
 set -g theme_title_display_process yes
 set -g theme_title_use_abbreviated_path no
@@ -53,5 +69,5 @@ set -U FZF_DEFAULT_OPTS "--height 40% --layout reverse-list --inline-info"
 set -U FZF_DEFAULT_COMMAND "fd --no-ignore-vcs --follow --hidden . --base-directory \$dir"
 set -U FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
 
-#fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
-# fenv "source ~/.nix-profile/etc/profile.d/hm-session-vars.sh"
+# fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
+fenv "source ~/.nix-profile/etc/profile.d/hm-session-vars.sh"
