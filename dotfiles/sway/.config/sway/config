@@ -177,6 +177,8 @@ for_window [class="zoom"] floating enable
 for_window [title="Zoom Meeting"] floating disable
 for_window [class=".*"] border pixel 0
 
+tiling_drag disable
+
 ## Multimedia Keys
 
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5
@@ -207,7 +209,7 @@ output eDP-1 scale 1.9
 exec "polkit-gnome-authentication-agent-1"
 exec "eval (ssh-agent -c)"
 exec "waybar"
-exec_always "env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1"
+exec "env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1"
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

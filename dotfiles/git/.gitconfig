@@ -16,3 +16,5 @@
 	commitm = commit -m
 	ff = pull --ff-only
 	rbmain = pull --rebase origin main
+[push]
+	default = current
