@@ -20,6 +20,7 @@ hide_edge_borders both
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Control
+tiling_drag off
 mouse_warping none
 
 focus_follows_mouse no
@@ -188,6 +189,15 @@ for_window [class="zoom"] floating enable
 for_window [title="Zoom Meeting"] floating disable
 for_window [class=".*"] border pixel 0
 
+bar {
+    mode hide
+    hidden_state hide
+    tray_output primary
+    modifier none
+}
+
+bindcode 105 bar hidden_state toggle
+
 ## Multimedia Keys
 
 # volume
@@ -215,14 +225,14 @@ bindsym $mod+w exec "/usr/bin/chromium"
 bindsym $mod+slash exec "splatmoji copy"
 
 # Autostart apps
-exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-exec_always --no-startup-id "compton --config ~/.config/compton/compton.conf -b"
+#exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+exec --no-startup-id "lxqt-policykit-agent"
+exec_always --no-startup-id "picom --config ~/.config/compton/compton.conf -b"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "sleep 2s && kalu"
 exec_always --no-startup-id "xrandr --output DP-4.8 --auto --primary --left-of HDMI-0"
-exec --no-startup-id "eval (ssh-agent -c)"
+#exec --no-startup-id "eval (ssh-agent -c)"
 #exec_always --no-startup-id "picom --config ~/.config/compton/compton.conf"
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 exec --no-startup-id "xset s off && xset -dpms"
-exec --no-startup-id "watchman watch ~/Sourcegraph/sourcegraph/"

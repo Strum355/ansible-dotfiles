@@ -3,14 +3,14 @@ monitor = DP-4.8
 monitor-fallback = 
 bottom = false
 font-0 = monospace:size=10
-#font-1 = Blobmoji:scale=11
 font-1 = Font Awesome 5 Brands:size=10
 font-2 = Font Awesome 5 Free:size=10
 font-3 = Noto Emoji:scale=14
 font-4 = Fira Code:size=10
+font-5 = DejaVu Sans Mono
 
 modules-left = window
-modules-right = fs_docker fs_root fs_home fs_lxd fs_sg cpu memory volume wired-network date powermenu
+modules-right = fs_docker fs_root fs_home fs_lxd fs_sg fs_nix cpu memory volume wired-network date powermenu
 
 spacing = 1
 padding-right = 5
@@ -37,28 +37,28 @@ format = <label> <ramp-coreload>
 label = CPU
 
 ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2
+ramp-coreload-0-font = 5
 ramp-coreload-0-foreground = #aaff77
 ramp-coreload-1 = ▂
-ramp-coreload-1-font = 2
+ramp-coreload-1-font = 5
 ramp-coreload-1-foreground = #aaff77
 ramp-coreload-2 = ▃
-ramp-coreload-2-font = 2
+ramp-coreload-2-font = 5
 ramp-coreload-2-foreground = #aaff77
 ramp-coreload-3 = ▄
-ramp-coreload-3-font = 2
+ramp-coreload-3-font = 5
 ramp-coreload-3-foreground = #aaff77
 ramp-coreload-4 = ▅
-ramp-coreload-4-font = 2
+ramp-coreload-4-font = 5
 ramp-coreload-4-foreground = #fba922
 ramp-coreload-5 = ▆
-ramp-coreload-5-font = 2
+ramp-coreload-5-font = 5
 ramp-coreload-5-foreground = #fba922
 ramp-coreload-6 = ▇
-ramp-coreload-6-font = 2
+ramp-coreload-6-font = 5
 ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
-ramp-coreload-7-font = 2
+ramp-coreload-7-font = 5
 ramp-coreload-7-foreground = #ff5555
 
 [module/date]
@@ -105,6 +105,13 @@ type = internal/fs
 mount-0 = /home
 interval = 30
 fixed-values = true
+label-mounted = %mountpoint% %percentage_used%%
+
+[module/fs_nix]
+type = internal/fs
+mount-0 = /nix
+interval = 30
+fix-values = true
 label-mounted = %mountpoint% %percentage_used%%
 
 [module/wired-network]

@@ -6,6 +6,7 @@ set -x M2 $M2_HOME/bin
 set -x PATH $M2 $PATH
 set -x RUST_BACKTRACE 1
 set -x GO111MODULE on
+set -x GOPROXY https://proxy.golang.org,direct
 set -x VAULT_ADDR http://127.0.0.1:10001
 set -x KUBECONFIG ~/kubeconfig 
 set -x EDITOR nano
@@ -14,17 +15,12 @@ set -x JAVA_OPTS -XX:+IgnoreUnrecognizedVMOptions -XX:+ShowCodeDetailsInExceptio
 #set -x JAVA_HOME /usr/lib/jvm/java-16-jdk
 
 set -x REDIS_DATA_DIR /home/noah/Sourcegraph/redis_data
-#set -x PGDATA_DIR /home/noah/Sourcegraph/postgres_data 
-#set -x PGPORT 5432
-#set -x PGHOST localhost
-set -x PGUSER noah
 #set -x PGPASSWORD sourcegraph
 #set -x PGDATABASE sourcegraph
 #set -x PGSSLMODE disable
 
-set -x BROWSER firefox
-
-set -x MCSHADER_DEBUG true
+set -x WLR_NO_HARDWARE_CURSOR 1
+set -x MOZ_USE_XINPUT2 1
 
 set -x NIX_PATH $HOME/.nix-defexpr/channels:$NIX_PATH
 
@@ -57,17 +53,14 @@ function dgrep
 end
 
 if test -n "$DESKTOP_SESSION"
-    set -x (gnome-keyring-daemon --start | string split "=")
+    #set -x (gnome-keyring-daemon --start | string split "=")
     #fenv "eval `gnome-keyring-daemon --start`"
 end
 
-function __direnv_export_eval --on-event fish_postexec;
-        "direnv" export fish | source;
-end
+set -x (systemctl --user show-environment | grep SSH_AUTH_SOCK | string split "=")
 
 set -U FZF_DEFAULT_OPTS "--height 40% --layout reverse-list --inline-info"
 set -U FZF_DEFAULT_COMMAND "fd --no-ignore-vcs --follow --hidden . --base-directory \$dir"
 set -U FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
 
-# fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
-fenv "source ~/.nix-profile/etc/profile.d/hm-session-vars.sh"
+#fenv "source ~/.nix-profile/etc/profile.d/nix.sh"
